@@ -33,6 +33,7 @@ import org.sonar.db.alm.setting.AlmSettingDao;
 import org.sonar.db.alm.setting.AlmSettingDto;
 import org.sonar.db.alm.setting.ProjectAlmSettingDao;
 import org.sonar.db.alm.setting.ProjectAlmSettingDto;
+import org.sonar.db.permission.ProjectPermission;
 import org.sonar.db.project.ProjectDto;
 import org.sonar.server.component.ComponentFinder;
 import org.sonar.server.exceptions.BadConfigurationException;
@@ -203,6 +204,6 @@ class ValidateBindingActionTest {
         underTest.handle(request, response);
 
         verify(validator).validate(projectAlmSettingDto, almSettingDto);
-        verify(userSession).hasEntityPermission(UserRole.USER, projectDto);
+        verify(userSession).hasEntityPermission(ProjectPermission.USER, projectDto);
     }
 }

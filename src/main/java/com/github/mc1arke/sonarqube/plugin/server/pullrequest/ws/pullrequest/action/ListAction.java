@@ -43,6 +43,7 @@ import org.sonar.db.component.BranchType;
 import org.sonar.db.component.SnapshotDto;
 import org.sonar.db.measure.MeasureDto;
 import org.sonar.db.permission.GlobalPermission;
+import org.sonar.db.permission.ProjectPermission;
 import org.sonar.db.project.ProjectDto;
 import org.sonar.db.protobuf.DbProjectBranches;
 import org.sonar.server.component.ComponentFinder;
@@ -105,8 +106,8 @@ public class ListAction extends ProjectWsAction {
     }
 
     private static void checkPermission(ProjectDto project, UserSession userSession) {
-        if (userSession.hasEntityPermission(UserRole.USER, project) ||
-            userSession.hasEntityPermission(UserRole.SCAN, project) ||
+        if (userSession.hasEntityPermission(ProjectPermission.USER, project) ||
+            userSession.hasEntityPermission(ProjectPermission.SCAN, project) ||
             userSession.hasPermission(GlobalPermission.SCAN)) {
             return;
         }

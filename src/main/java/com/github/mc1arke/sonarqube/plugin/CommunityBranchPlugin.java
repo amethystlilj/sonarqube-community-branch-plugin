@@ -23,6 +23,7 @@ import org.sonar.api.Plugin;
 import org.sonar.api.PropertyType;
 import org.sonar.api.SonarQubeSide;
 import org.sonar.api.config.PropertyDefinition;
+import org.sonar.api.config.PropertyDefinition.ConfigScope;
 import org.sonar.api.resources.Qualifiers;
 import org.sonar.core.config.PurgeConstants;
 import org.sonar.core.extension.CoreExtension;
@@ -131,7 +132,7 @@ public class CommunityBranchPlugin implements Plugin, CoreExtension {
                                           .subCategory(CoreProperties.SUBCATEGORY_BRANCHES_AND_PULL_REQUESTS)
                                           .multiValues(true)
                                           .defaultValue("main,master,develop,trunk")
-                                          .onQualifiers(Qualifiers.PROJECT)
+                                          .onConfigScopes(ConfigScope.PROJECT)
                                           .index(2)
                                           .build()
 
@@ -144,7 +145,7 @@ public class CommunityBranchPlugin implements Plugin, CoreExtension {
             context.addExtensions(PropertyDefinition.builder(IMAGE_URL_BASE)
                                           .category(CoreProperties.CATEGORY_GENERAL)
                                           .subCategory(CoreProperties.SUBCATEGORY_GENERAL)
-                                          .onQualifiers(Qualifiers.APP)
+                                          .onConfigScopes(ConfigScope.APP)
                                           .name("Images base URL")
                                           .description("Base URL used to load the images for the PR comments (please use this only if images are not displayed properly).")
                                           .type(PropertyType.STRING)
