@@ -99,7 +99,7 @@ jar {
           'Plugin-License': 'GNU LGPL 3',
           'Plugin-Version': "${project.version}",
           'Plugin-Organization': 'Michael Clarke',
-          'Sonar-Version': "25.4.0.105899",
+          'Sonar-Version': "9.14.0.375",
           'Plugin-IssueTrackerUrl': 'https://github.com/mc1arke/sonarqube-community-branch-plugin/issues',
           'Plugin-Key': 'communityBranchPlugin',
           'Plugin-Class': 'com.github.mc1arke.sonarqube.plugin.CommunityBranchPluginBootstrap',
